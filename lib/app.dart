@@ -23,8 +23,18 @@ class _MyAppState extends State<MyApp> {
   void initState() {
     // 初始化user info, 从本地获取
     // _providerState.userModel =
-    // _providerState.isLogin = true;
+    _providerState.isLogin = true;
     super.initState();
+  }
+
+  // 初始化默认route
+  String _checkDefaultRoute() {
+    if (_providerState.isLogin) {
+      return WelcomePage.routeName;
+    }
+    else {
+      return LoginPage.routeName;
+    }
   }
 
   @override
@@ -37,11 +47,19 @@ class _MyAppState extends State<MyApp> {
         }),
       ],
       child: Consumer(
-        builder: (context, _providerState, child) {
+        builder: (context, _provider, child) {
           return MaterialApp(
             theme: ThemeData(
               primarySwatch: Colors.blue,
             ),
+            builder: (context, widget){
+              return MediaQuery(
+                // 设置全局的文字大小不随着系统设置改变
+                data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
+                child: widget!,
+              );
+            },
+            // 配置route
             routes: {
               WelcomePage.routeName: (context) {
                 return const WelcomePage();
@@ -53,6 +71,8 @@ class _MyAppState extends State<MyApp> {
                 return const LoginPage();
               }
             },
+            // 初始化默认rote
+            initialRoute: _checkDefaultRoute(),
           );
         },
       ),

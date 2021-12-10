@@ -5,8 +5,8 @@ import 'package:provider/src/provider.dart';
 
 class WelcomePage extends StatefulWidget {
 
-  static String routeName = "/";
-
+  // static String routeName = "/";
+  static String routeName = "welcome";
 
   const WelcomePage({Key? key}) : super(key: key);
 

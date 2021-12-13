@@ -23,7 +23,7 @@ class _MyAppState extends State<MyApp> {
   void initState() {
     // 初始化user info, 从本地获取
     // _providerState.userModel =
-    _providerState.isLogin = true;
+    // _providerState.isLogin = true;
     super.initState();
   }
 
@@ -72,7 +72,7 @@ class _MyAppState extends State<MyApp> {
               }
             },
             // 初始化默认rote
-            initialRoute: _checkDefaultRoute(),
+            // initialRoute: _checkDefaultRoute(),
           );
         },
       ),

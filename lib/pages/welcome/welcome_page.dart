@@ -34,7 +34,7 @@ class _WelcomePageState extends State<WelcomePage> {
 
     Future.delayed(const Duration(microseconds: 500), (){
       setState(() {
-        _text = "Welecome";
+        _text = "Welcome";
       });
     });
 
@@ -44,10 +44,15 @@ class _WelcomePageState extends State<WelcomePage> {
       });
     });
 
-    // goToRealPage();
+    goToRealPageDelay();
   }
 
   // 跳转到对应的page
+  goToRealPageDelay() {
+    Future.delayed(const Duration(seconds: 5), (){
+      goToRealPage();
+    });
+  }
   goToRealPage() {
     ProviderState _state = context.read<ProviderState>();
     if(_state.isLogin) {
@@ -56,22 +61,12 @@ class _WelcomePageState extends State<WelcomePage> {
     else {
       NavigatorUtils.goLogin(context);
     }
-
-    // Future.delayed(const Duration(seconds: 2), (){
-    //   if(_state.isLogin) {
-    //     NavigatorUtils.goHome(context);
-    //   }
-    //   else {
-    //     NavigatorUtils.goLogin(context);
-    //   }
-    //
-    // });
   }
   
   @override
   Widget build(BuildContext context) {
     // 不放在这里，是因为会导致重复push
-    // goToRealPage();
+    // goToRealPageDelay();
     
     return Scaffold(
       body: Container(
@@ -89,20 +84,17 @@ class _WelcomePageState extends State<WelcomePage> {
               top: 100,
               right: 30,
               child: GestureDetector(
-                child: CircleCountDownWidget(
+                child: const CircleCountDownWidget(
                   totalTime: 5000,
                   autoStart: true,
-                  callBack: () {
-                    goToRealPage();
-                  },
                 ),
                 onTap: () {
-
+                  goToRealPage();
                 },
               ),
             ),
 
-            // welecome 文案
+            // welcome 文案
             Align(
               alignment: const Alignment(0.0, 0.3),
               child: Text(

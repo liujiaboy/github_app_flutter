@@ -8,8 +8,13 @@ class CircleCountDownWidget extends StatefulWidget {
   final double totalTime;
   final bool autoStart;
   final double size;
-  final void Function() callBack;
-  const CircleCountDownWidget({Key? key, required this.totalTime, required this.autoStart, this.size=40, required this.callBack}) : super(key: key);
+  final void Function()? callBack;
+  const CircleCountDownWidget({
+    Key? key,
+    required this.totalTime,
+    this.autoStart = false,
+    this.size = 50,
+    this.callBack}) : super(key: key);
 
 
 
@@ -40,7 +45,9 @@ class _CircleCountDownWidgetState extends State<CircleCountDownWidget> {
       if (_currentTime <= 0) {
         _timer!.cancel();
         _currentTime = 0;
-        widget.callBack();
+        if (widget.callBack != null) {
+          widget.callBack!();
+        }
       }
 
       // 更新数据流
@@ -87,11 +94,12 @@ class _CircleCountDownWidgetState extends State<CircleCountDownWidget> {
           children: [
             // 数字倒计时
             Text(
-              (snapshot.data! / 1000).toStringAsFixed(0),
-              style: const TextStyle(fontSize: 22, color: Colors.blue),
+              "跳过${(snapshot.data! / 1000).toStringAsFixed(0)}",
+              style: const TextStyle(fontSize: 12, color: Colors.blue),
             ),
             // 圆弧
             CircularProgressIndicator(
+              strokeWidth: 2,
               value: 1.0 - snapshot.data! / widget.totalTime,
             ),
           ],

@@ -72,7 +72,7 @@ class _MyAppState extends State<MyApp> {
               }
             },
             // 初始化默认rote
-            // initialRoute: _checkDefaultRoute(),
+            initialRoute: _checkDefaultRoute(),
           );
         },
       ),

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:github_app_flutter/widget/animate_background_widget.dart';
+import 'package:github_app_flutter/widget/particle/particle_widget.dart';
 
 class LoginPage extends StatefulWidget {
   static String routeName = "login";
@@ -11,10 +13,23 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      alignment: Alignment.center,
-      color: Colors.green,
-      child: const Text("login page"),
+    return GestureDetector(
+      behavior: HitTestBehavior.translucent,
+      onTap: (){
+
+      },
+      child: Scaffold(
+        body: Container(
+          color: Colors.white,
+          child: Stack(
+            children: [
+              Positioned.fill(child: AnimateBackground()),
+              Positioned.fill(child: ParticleWidget(numberOfParticles: 30,)),
+              
+            ],
+          ),
+        ),
+      ),
     );
   }
 }

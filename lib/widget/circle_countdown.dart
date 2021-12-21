@@ -16,12 +16,6 @@ class CircleCountDownWidget extends StatefulWidget {
     this.size = 50,
     this.callBack}) : super(key: key);
 
-
-
-  startTimer() {
-
-  }
-
   @override
   _CircleCountDownWidgetState createState() => _CircleCountDownWidgetState();
 }
@@ -49,7 +43,6 @@ class _CircleCountDownWidgetState extends State<CircleCountDownWidget> {
           widget.callBack!();
         }
       }
-
       // 更新数据流
       _streamController.add(_currentTime);
     });

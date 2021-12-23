@@ -45,6 +45,7 @@ dependencies:
   google_fonts: ^2.1.0 # Google字体
   flare_flutter: ^3.0.0-nullsafety.0 # flare动画处理
   simple_animations: ^4.0.1 #动画
+  flutter_spinkit: ^5.1.0 # loading 动画
   supercharged: ^2.1.1  # category
 
   # Plugin
